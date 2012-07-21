@@ -1,0 +1,14 @@
+<%= simple_form_for(@field, validate: true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :field_type, collection: {'انتخاب رشته'=>'daneshkade-reshte-gerayes','انتخاب مقطع تحصیلی'=>'maghta','انتخاب تعداد واحد'=>'tedadevahed'} %>
+    <%= f.input :description %>
+    <%= f.input :enabled %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<p>
+  <b>Form:</b>
+  <%= @filled_form.form.name %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @filled_form.data %>
+</p>
+
+
+<%= link_to 'Edit', edit_form_filled_form_path(@form,@filled_form) %> |
+<%= link_to 'Back', form_filled_forms_path(@form) %>

@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%= @field.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @field.description %>
+</p>
+
+<p>
+  <b>Enabled:</b>
+  <%= @field.enabled %>
+</p>
+
+
+<%= link_to 'Edit', edit_field_path(@field) %> |
+<%= link_to 'Back', fields_path %>

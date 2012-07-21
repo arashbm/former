@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%= @form.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= simple_format @form.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_form_path(@form) %> |
+<%= link_to 'Back', forms_path %>

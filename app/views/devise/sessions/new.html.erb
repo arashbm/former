@@ -1,0 +1,23 @@
+<h2>ورود</h2>
+<div class='row'>
+ <div class='span4'>
+    <p>اگر تاکنون ثبت‌نام نکرده‌اید می‌توانید از طریق صفحه‌ی ثبت‌نام این کار را انجام دهید. اگر ثبت‌نام کرده‌اید ولی رمز عبور‌تان را فراموش کرده‌اید از لینک انتهای صفحه نسبت به بازیابی آن اقدام کنید. توجه کنید رمز عور شما مانند کارت شناسایی شماست، پس در حفظ امنیت آن کوشا باشید.</p>
+  </div>
+
+  <div class='span8'>
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email, :required => false, :autofocus => true %>
+        <%= f.input :password, :required => false %>
+        <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "ورود" %> یا <%= link_to 'رمز عبور خود را بازیابی کنید', new_password_path(resource_name)  %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+<%= render "links" %>

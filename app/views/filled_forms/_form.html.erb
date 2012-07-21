@@ -1,0 +1,43 @@
+<div class='row'>
+  <div class='span5 offset1'>
+    <%= simple_form_for([@form,@filled_form], validate: true) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error :base %>
+      <div class="form-inputs">
+        <%= f.fields_for :data do |d| %>
+          <% @form.fields.each do |field| %>
+            <%= value=@filled_form.data[field.name] %>
+            
+            <% case field.field_type %>
+            <% when 'maghta' %>
+              <%= d.input field.name.to_sym, required: false, hint: field.description, collection: [t(:undergrad),t(:grad),t(:phd)], input_html: {value: value} %>
+            <% when 'tedadevahed' %>
+              <%= d.input field.name.to_sym, required: false, hint: field.description, collection: 0..6, input_html: {value: value} %>
+            <% when 'daneshkade-reshte-gerayes' %>
+              <%= d.fields_for field.name.to_sym do |g| %>
+                <%= g.input 'دانشکده'.to_sym, required: false, collection: ['Physics','Mathematics','So on...'], input_html: {value: value['دانشکده'.to_sym]}  %>
+                <%= g.input 'رشته'.to_sym, required: false, collection: ['Physics', 'Mathematics', 'CS', 'CE'], input_html: {value: value['رشته'.to_sym]} %>
+                <%= g.input 'گرایش'.to_sym, required: false, input_html: { value: value['گرایش'.to_sym]}   %> 
+              <% end %>
+            <% else %>
+              <%= d.input field.name.to_sym, required: false, :hint => field.description, input_html: {value: value} %>
+            <% end %>
+            <span class="help-inline"><%= @filled_form.errors["data[#{field.name}]"][0] if @filled_form.errors["data[#{field.name}]"][0].present?  %></span>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+  </div>
+  <div class='span5'>
+    <p><%= simple_format @form.description %></p>
+    <% @filled_form.errors.each do |a,b| %>
+      <p>
+        <%= a %> = <%= b %>
+      </p>
+    <% end %>
+  </div>  
+</div>

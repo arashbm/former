@@ -1,0 +1,18 @@
+<h1>پنل شخصی</h1>
+<p>در این صفحه می‌توانید لیستی از فرم‌هایی که ممکن است بخواهید پر کنید را مشاهده کنید. با کلیک روی دکمه‌ی «پر کردن» وارد صفحه‌ی پر کردن همان فرم می‌شوید. همچنین می‌توانید فرم‌های پر شده‌ی قبلی را نیز از لینک «سوابق» مشاهده کنید.</p>
+
+<% @forms.slice_before{|i| @forms.index(i).even?}.each do |form_group| %>
+  <div class='row'>
+    <% form_group.each do |form| %>
+      <div class="span6">
+        <h2><%= form.name %></h2>
+        <p><%= truncate form.description,length:201,separator:' ' %></p>
+        <%= link_to 'پر کردن این فرم', new_form_filled_form_path(form), class:"btn btn-success" %>
+        <% pre_count=current_student.filled_forms.where(form_id:form).count %>
+        <% if pre_count>0 %>
+          یا <%= link_to 'مشاهده‌ی سوابق پر کردن این فرم', form_filled_forms_path(form) %> (<%= pre_count %> بار دیگر)
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

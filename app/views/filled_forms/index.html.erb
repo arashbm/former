@@ -1,0 +1,22 @@
+<h1>سوابق پر شدن فرم <%= @form.name %></h1>
+<p><%= simple_format @form.description %></p>
+<table>
+  <tr>
+    <th>Data</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @filled_forms.each do |filled_form| %>
+  <tr>
+    <td><%= filled_form.data %></td>
+    <td><%= link_to 'Show', [@form,filled_form] %></td>
+    <td><%= link_to 'Edit', edit_form_filled_form_path(@form,filled_form) %></td>
+    <td><%= link_to 'Destroy', [@form,filled_form], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'پر کردن یک نسخه‌ی جدید از این فرم', new_form_filled_form_path(@form) %>

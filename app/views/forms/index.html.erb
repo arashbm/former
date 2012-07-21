@@ -1,0 +1,23 @@
+<h1>لیست فرم‌ها</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @forms.each do |form| %>
+  <tr>
+    <td><%= form.name %></td>
+    <td><%= form.description %></td>
+    <td><%= link_to 'ویرایش', edit_form_path(form) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Form', new_form_path %>
