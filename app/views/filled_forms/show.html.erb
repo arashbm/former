@@ -2,10 +2,14 @@
   <b>Form:</b>
   <%= @filled_form.form.name %>
 </p>
-
+<div>
+  <%= content_tag_for :p, @filled_form.filled_fields do |f| %>
+    <%= content_tag :strong, f.field.name %>: <%= f.value %>
+  <% end %>
+</div>
 <p>
-  <b>Data:</b>
-  <%= @filled_form.data %>
+  <b>completed:</b>
+  <%= @filled_form.completed? %>
 </p>
 
 

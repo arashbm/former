@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  filled_form: 
+  field: 
+  value: MyText
+
+two:
+  filled_form: 
+  field: 
+  value: MyText

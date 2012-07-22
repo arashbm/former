@@ -5,13 +5,15 @@
   <div class='row'>
     <% form_group.each do |form| %>
       <div class="span6">
-        <h2><%= form.name %></h2>
-        <p><%= truncate form.description,length:201,separator:' ' %></p>
-        <%= link_to 'پر کردن این فرم', new_form_filled_form_path(form), class:"btn btn-success" %>
-        <% pre_count=current_student.filled_forms.where(form_id:form).count %>
-        <% if pre_count>0 %>
-          یا <%= link_to 'مشاهده‌ی سوابق پر کردن این فرم', form_filled_forms_path(form) %> (<%= pre_count %> بار دیگر)
-        <% end %>
+        <div class="well">
+          <h2><%= form.name %>
+          <% pre_count=current_student.filled_forms.where(form_id:form).count %>            
+          <% if pre_count>0 %>
+            <small><%= link_to 'سوابق پر کردن این فرم', form_filled_forms_path(form) %> (<%= pre_count %> بار)</small>
+          <% end %></h2>
+          <p class="form-desc"><%= truncate form.description,length:350,separator:'.' %></p>
+          <%= fill_new_button(form) %>
+        </div>
       </div>
     <% end %>
   </div>

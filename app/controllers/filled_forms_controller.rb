@@ -23,7 +23,12 @@ class FilledFormsController < ApplicationController
   end
 
   def new
-    @filled_form = @filled_forms.new
+    # redirecting to edit if there is any other incomplete attempts
+    if @filled_forms.all? { |f| f.completed? }
+      @filled_form = @filled_forms.new
+    else
+      redirect_to([:edit, @form, @filled_forms.where(completed:false).last]) and return
+    end
 
     respond_to do |format|
       format.html # new.html.erb

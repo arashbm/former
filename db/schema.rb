@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629214843) do
+ActiveRecord::Schema.define(:version => 20120721231350) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -45,12 +45,24 @@ ActiveRecord::Schema.define(:version => 20120629214843) do
     t.integer "field_id"
   end
 
+  create_table "filled_fields", :force => true do |t|
+    t.integer  "filled_form_id"
+    t.integer  "field_id"
+    t.text     "value"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "filled_fields", ["field_id"], :name => "index_filled_fields_on_field_id"
+  add_index "filled_fields", ["filled_form_id"], :name => "index_filled_fields_on_filled_form_id"
+
   create_table "filled_forms", :force => true do |t|
     t.integer  "student_id"
     t.integer  "form_id"
     t.text     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "completed",  :default => false, :null => false
   end
 
   create_table "forms", :force => true do |t|
