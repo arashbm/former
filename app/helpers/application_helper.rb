@@ -15,9 +15,12 @@ module ApplicationHelper
 
      # special case for root_path
      class_string='active' if path==me_students_path && current_page?(root_path)
-     class_string<<' '<<additional_class if additional_class != ''
+     class_string << ' ' << additional_class if additional_class != ''
      content_tag :li, class: class_string do
        link_to name,path
      end
+  end
+  def badge(text,additional_classes="")
+    content_tag :span, text, class: "badge #{additional_classes}"
   end
 end

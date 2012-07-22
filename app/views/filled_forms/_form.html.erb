@@ -11,9 +11,9 @@
           <%# #TODO: MOVE IT OUTA HERE %>
           <% when 'tedadevahed' then 0..6 %>
           <% when 'maghta' then [t(:undergrad),t(:grad),t(:phd)]  %>
-          <% else nil %>
+          <% else false %>
           <% end %>
-          <%= filled_field_input d, field, collection %>
+          <%= filled_field_input d, field %>
           <%# <span class="help-inline"><%= @filled_form.errors["data[#{field.name}]"][0] if @filled_form.errors["data[#{field.name}]"][0].present?  %1></span> %>
         <% end %>
       </div>
@@ -23,7 +23,7 @@
     <% end %>
   </div>
   <div class='span5'>
-    <p><%= simple_format @form.description %></p>
+    <div class='well'><%= simple_format @form.description %></div>
     <% @filled_form.errors.each do |a,b| %>
       <p>
       <%= a %> = <%= b %>

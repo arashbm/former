@@ -10,15 +10,14 @@ class FilledForm < ActiveRecord::Base
 
   #FIXME: validating on create because?!
   validates_each :form, on: :create do |record, attr, value|
-    record.errors.add(:base, :not_enabled) if value.enabled? != true
+    record.errors.add(:base, :not_enabled) unless value.enabled?
   end
 
   validates :form, presence: true
   
   # creating empty filled_fields
   after_initialize do
-    # save if not persisted before!
-    save! if !persisted?
+    save! unless persisted?
     form.fields.each do |i|
       filled_fields.find_or_create_by_field_id!(i.id)
     end

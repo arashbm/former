@@ -1,8 +1,10 @@
 <h1>سوابق پر شدن فرم <%= @form.name %></h1>
 <p><%= simple_format @form.description %></p>
-<table>
+<table class="table">
   <tr>
-    <th>Data</th>
+    <th>تاریخ ایجاد</th>
+    <th>اخرین ویرایش</th>
+    <th>وضعیت</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +12,9 @@
 
 <% @filled_forms.each do |filled_form| %>
   <tr>
-    <td>completed: <%= filled_form.completed? %></td>
+    <td><%= JalaliDate.new(filled_form.created_at).strftime('%A %e %b %Y ساعت  %H:%M') %></td>   
+    <td><%= JalaliDate.new(filled_form.updated_at).strftime('%A %e %b %Y ساعت  %H:%M') %></td>   
+    <td><%= if filled_form.completed? then badge('تکمیل شده','badge-success') else badge('ناکامل','badge-warning') end %></td>
     <td><%= link_to 'Show', [@form,filled_form] %></td>
     <td><%= link_to 'Edit', edit_form_filled_form_path(@form,filled_form) %></td>
     <td><%= link_to 'Destroy', [@form,filled_form], confirm: 'Are you sure?', method: :delete %></td>
@@ -19,4 +23,4 @@
 </table>
 
 <br />
-<%=fill_new_button(@form)%>
+<%=fill_new_button(@form,@filled_forms)%>

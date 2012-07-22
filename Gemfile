@@ -39,5 +39,8 @@ gem 'simple_form'
 # Use High Voltage for semistatic pages
 gem 'high_voltage'
 
+# for jalali date
+gem 'jalalidate'
+
 # For debugging
 # gem 'ruby-debug19', :require => 'ruby-debug'
