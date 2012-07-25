@@ -3,13 +3,24 @@
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs">
+  <div class="form-inputs">
     <%= f.input :email, :required => true, :autofocus => true %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :father_name %>
+    <%= f.input :gender, collection: ['مرد','زن'], as: :radio %>
+    <%= f.input :major %>
+    <%= f.input :minor %>
+    <%= f.input :phone_number %>
+    <%= f.input :mobile_phone %>
+    <%= f.input :identification_number %>
+    <%= f.input :birth_date %>
+    <%= f.input :bylaw %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
   </div>
 
-  <div class="actions">
+  <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>

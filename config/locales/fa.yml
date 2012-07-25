@@ -214,7 +214,17 @@ fa:
       student:
         email: ایمیل
         password: رمزعبور
+        password_confirmation: تکرار رمز عبور
         remember_me: مرا به یاد بسپار
+        gender: جنسیت
+        major: رشته
+        minor: گرایش
+        phone_number: تلفن ثابت
+        mobile_phone: تلفن همراه
+        father_name: نام پدر
+        identification_number: کد ملی
+        birth_date: تاریخ تولد
+        bylaw: شامل کدام بند آیین نامه می‌شوید
       admin:
         email: ایمیل
         password: رمزعبور
