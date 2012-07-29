@@ -1,0 +1,30 @@
+<%= simple_form_for([:admin, @form, @filled_form]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <legend>امکانات مدیریتی</legend>
+    <%= f.association :student %>
+    <%= f.input :verified %>
+    <%= f.input :verification_status %>
+    <%= f.input :progress %>
+    <%= f.input :confirmed %>
+    <%= f.input :confirmation_status %>
+    <legend>اطلاعات وارد شده در فرم</legend>
+    <%= f.fields_for :filled_fields do |d| %>
+      <% field=d.object.field %>
+      <%= d.input :field_id, as: :hidden %>
+      <% collection=case field.field_type %>
+      <%# #TODO: MOVE IT OUTA HERE %>
+    <% when 'tedadevahed' then 0..6 %>
+    <% when 'maghta' then [t(:undergrad),t(:grad),t(:phd)]  %>
+      <% else false %>
+      <% end %>
+      <%= filled_field_input d, field %>
+      <%# <span class="help-inline"><%= @filled_form.errors["data[#{field.name}]"][0] if @filled_form.errors["data[#{field.name}]"][0].present?  %1></span> %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

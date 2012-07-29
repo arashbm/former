@@ -1,4 +1,4 @@
-<%= simple_form_for(@field, validate: true) do |f| %>
+<%= simple_form_for([:admin,@field], validate: true) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

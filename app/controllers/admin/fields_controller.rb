@@ -1,4 +1,4 @@
-class FieldsController < ApplicationController
+class Admin::FieldsController < ApplicationController
 
   # Only an admin can manage fields
   before_filter :authenticate_admin!
@@ -48,7 +48,7 @@ class FieldsController < ApplicationController
 
     respond_to do |format|
       if @field.save
-        format.html { redirect_to @field, notice: 'Field was successfully created.' }
+        format.html { redirect_to [:admin, @field], notice: 'Field was successfully created.' }
         format.json { render json: @field, status: :created, location: @field }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class FieldsController < ApplicationController
 
     respond_to do |format|
       if @field.update_attributes(params[:field])
-        format.html { redirect_to @field, notice: 'Field was successfully updated.' }
+        format.html { redirect_to [:admin,@fields], notice: 'Field was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,7 +80,7 @@ class FieldsController < ApplicationController
     @field.destroy
 
     respond_to do |format|
-      format.html { redirect_to fields_url }
+      format.html { redirect_to admin_fields_url }
       format.json { head :no_content }
     end
   end

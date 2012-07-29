@@ -4,4 +4,7 @@ class FilledField < ActiveRecord::Base
 
   # field_id is a security risk or not?!
   attr_accessible :value, :field_id
+  attr_accessible :value, :field_id, as: :admin
+
+  
 end

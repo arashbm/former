@@ -1,9 +1,9 @@
 <h1>لیست فرم‌ها</h1>
 
-<table>
+<table class="table">
   <tr>
-    <th>Name</th>
-    <th>Description</th>
+    <th><%= t ".name" %></th>
+    <th><%= t ".description" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,11 +13,11 @@
   <tr>
     <td><%= form.name %></td>
     <td><%= form.description %></td>
-    <td><%= link_to 'ویرایش', edit_form_path(form) %></td>
+    <td><%= link_to 'ویرایش', edit_admin_form_path(form) %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Form', new_form_path %>
+<%= link_to 'New Form', new_admin_form_path %>

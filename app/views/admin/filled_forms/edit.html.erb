@@ -1,0 +1,6 @@
+<h1>ویرایش نسخه‌ی پرشده از <%= link_to @form.name, [:admin, @form] %> توسط <%= @filled_form.student_id? ? @filled_form.student.full_name : "دانشجوی معین نشده" %></h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', [:admin, @form, @filled_form] %> |
+<%= link_to 'Back', admin_form_filled_forms_path(@form) %>

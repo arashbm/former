@@ -4,7 +4,6 @@ Former::Application.routes.draw do
   devise_for :students
 
 
-  resources :fields
 
   resources :forms do
     resources :filled_forms
@@ -12,6 +11,13 @@ Former::Application.routes.draw do
 
   resources :students do
     get 'me', on: :collection
+  end
+
+  namespace :admin do
+    resources :fields
+    resources :forms do
+      resources :filled_forms
+    end
   end
 
   root to: 'students#me'

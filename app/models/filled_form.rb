@@ -1,13 +1,15 @@
 # encoding: UTF-8
-require 'ostruct'
 class FilledForm < ActiveRecord::Base
-  attr_accessible :data, :form_id, :student_id, :filled_fields_attributes
+  attr_accessible :student_id, :filled_fields_attributes
+  attr_accessible :student_id, :filled_fields_attributes, :verified, :verification_status,
+    :progress, :confirmed, :confirmation_status, :as => :admin
 
   belongs_to :student
   belongs_to :form
   has_many :filled_fields, dependent: :destroy, validate: true, autosave: true
   accepts_nested_attributes_for :filled_fields
 
+  validates :student, presence: true, on: :update
   #FIXME: validating on create because?!
   validates_each :form, on: :create do |record, attr, value|
     record.errors.add(:base, :not_enabled) unless value.enabled?

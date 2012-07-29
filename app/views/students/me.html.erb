@@ -12,7 +12,10 @@
             <small><%= link_to 'سوابق پر کردن این فرم', form_filled_forms_path(form) %> (<%= pre_count %> بار)</small>
           <% end %></h2>
           <p class="form-desc"><%= truncate form.description,length:350,separator:'.' %></p>
-          <%= fill_new_button(form,current_student.filled_forms.where(form_id: form)) %>
+          <%= disabled_notice(form) %>
+          <% ff=current_student.filled_forms.where(form_id: form) %>
+          <%= fill_new_button(form,ff) %>
+          <%= edit_last_button(form,ff) %>
         </div>
       </div>
     <% end %>

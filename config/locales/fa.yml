@@ -211,6 +211,12 @@ fa:
       field: فیلد
       filled_form: فرم پر شده
     attributes:
+      filled_form:
+        verified: تایید محتوا
+        verification_status: وضعیت تایید
+        progress: وضعیت پیشرفت درخواست
+        confirmed: موافقت با درخواست
+        confirmation_status: وضعیت موافقت درخواست
       student:
         email: ایمیل
         password: رمزعبور

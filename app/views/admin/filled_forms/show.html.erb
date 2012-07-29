@@ -1,0 +1,27 @@
+<h1>نسخه‌ی <%= @filled_form.form.name %> توسط <%= @filled_form.student.full_name %> <%= content_tag :sup, badge('ناکامل', 'badge-warning') unless @filled_form.completed? %></h1>
+<p><strong>ایجاد شده در</strong> <%= JalaliDate.new(@filled_form.created_at).strftime('%A %e %b %Y ساعت  %H:%M') %></p>
+<p><strong>آخرین ویرایش در</strong> <%= JalaliDate.new(@filled_form.created_at).strftime('%A %e %b %Y ساعت  %H:%M') %></p>
+<div>
+  <h2>اطلاعات</h2>
+  <%= content_tag_for :p, @filled_form.filled_fields.all.delete_if{ |i| i.value.blank? } do |f| %>
+    <%= content_tag :strong, f.field.name %>: <%= f.value %>
+  <% end %>
+</div>
+<h2>وضعیت</h2>
+<div>
+  <h3>تکمیل <%= @filled_form.completed? ? 'شده' : 'نشده' %></h3>
+  <% if @filled_form.completed? %>
+    تمام بندهای این فرم تکمیل شده.
+  <% else %>
+    <p>این فیلد‌ها هنوز پر نشده‌ند:</p>
+    <ul>
+      <%= content_tag_for :li, @filled_form.filled_fields.select{|i| i.value.blank?} do |f| %>
+        <%= f.field.name %>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+
+<%= link_to 'Edit', edit_admin_form_filled_form_path(@form, @filled_form) %> |
+<%= link_to 'Back', admin_form_filled_forms_path(@form) %>

@@ -42,5 +42,7 @@ gem 'high_voltage'
 # for jalali date
 gem 'jalalidate'
 
+gem 'responders'
+
 # For debugging
 # gem 'ruby-debug19', :require => 'ruby-debug'

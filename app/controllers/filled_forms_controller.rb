@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class FilledFormsController < ApplicationController
 
   # Students can manage their forms
@@ -24,20 +25,18 @@ class FilledFormsController < ApplicationController
 
   def new
     # redirecting to edit if there is any other incomplete attempts
-    if @filled_forms.all? { |f| f.completed? }
+    if @filled_forms.all? { |f| f.verified? }
       @filled_form = @filled_forms.new
     else
-      redirect_to([:edit, @form, @filled_forms.where(completed:false).last]) and return
+      @filled_form = @filled_forms.delete_if(&:verified?).last
     end
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @filled_form }
-    end
+    redirect_to [:edit, @form, @filled_form] and return
   end
 
   def edit
     @filled_form = @filled_forms.find(params[:id])
+    redirect_to [@form,@filled_form], alert: 'محتوای این نسخه توسط مدیر سیستم تایید شده و قابل تغییر نیست.' if @filled_form.verified?
   end
 
   def create
