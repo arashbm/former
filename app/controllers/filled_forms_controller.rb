@@ -26,11 +26,10 @@ class FilledFormsController < ApplicationController
   def new
     # redirecting to edit if there is any other incomplete attempts
     if @filled_forms.all? { |f| f.verified? }
-      @filled_form = @filled_forms.new
+      @filled_form = @filled_forms.create!
     else
       @filled_form = @filled_forms.delete_if(&:verified?).last
     end
-
     redirect_to [:edit, @form, @filled_form] and return
   end
 

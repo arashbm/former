@@ -1,4 +1,4 @@
-<h1>نسخه‌ی <%= @filled_form.form.name %> <%= content_tag :sup, badge('ناکامل', 'badge-warning') unless @filled_form.completed? %></h1>
+<h1>نسخه‌ی <%= @filled_form.form.name %> <%= content_tag :sup, status_badges(@filled_form) %></h1>
 <p><strong>ایجاد شده در</strong> <%= JalaliDate.new(@filled_form.created_at).strftime('%A %e %b %Y ساعت  %H:%M') %></p>
 <p><strong>آخرین ویرایش در</strong> <%= JalaliDate.new(@filled_form.created_at).strftime('%A %e %b %Y ساعت  %H:%M') %></p>
 <div>
@@ -19,6 +19,29 @@
         <%= f.field.name %>
       <% end %>
     </ul>
+  <% end %>
+  <h3>تایید اطلاعات</h3>
+  <% if @filled_form.verified? %>
+    <p>دفتر استعداد‌های درخشان اطلاعات این فرم را تایید کرده و هم اکنون این فرم در حال طی کردن مراحل اداری‌ست.</p>
+
+    <h3>موافقت با درخواست</h3>
+    <% case @filled_form.confirmed? %>
+    <% when true %>
+      <p>با این درخواست موافقت شده. :)</p>
+    <% when false %>
+      <p>متأسفانه با این درخواست شما موافقت نشد. دلیل آن اینگونه ذکر شده:</p>
+      <%= content_tag :div, @filled_form.confirmation_status, class:'well' %>
+    <% when nil %>
+      <% if @filled_form.progress? %>
+        <p>هم اکنون وضعیت پیشرفت این درخواست اینگونه ذکر شده:</p>
+        <%= content_tag :div, @filled_form.progress, class:'well' %>
+      <% end %>
+    <% end %>
+  <% elsif @filled_form.verified? == false %>
+    <p>اطلاعات این فرم تایید نشد. دلیل آن اینگونه ذکر شده:</p>
+    <div class='well'>
+      <%= @filled_form.verification_status %>
+    </div>
   <% end %>
 </div>
 

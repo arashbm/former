@@ -213,10 +213,10 @@ fa:
     attributes:
       filled_form:
         verified: تایید محتوا
-        verification_status: وضعیت تایید
+        verification_status: علت عدم تایید
         progress: وضعیت پیشرفت درخواست
         confirmed: موافقت با درخواست
-        confirmation_status: وضعیت موافقت درخواست
+        confirmation_status: علت عدم موافقت
       student:
         email: ایمیل
         password: رمزعبور

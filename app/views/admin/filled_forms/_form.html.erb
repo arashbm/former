@@ -4,11 +4,17 @@
   <div class="form-inputs">
     <legend>امکانات مدیریتی</legend>
     <%= f.association :student %>
-    <%= f.input :verified %>
-    <%= f.input :verification_status %>
-    <%= f.input :progress %>
-    <%= f.input :confirmed %>
-    <%= f.input :confirmation_status %>
+    <% verify_col={ 'بررسی نشده'=>'nil',
+                    'تایید اطلاعات'=>'true',
+                    'رد کردن اطلاعات'=>'false'} %>
+    <% confirm_col={ 'نتیجه نامشخص است'=>'nil',
+                    'موافقت شده'=>'true',
+                    'موافقت نشده'=>'false'} %>
+    <%= f.input :verified, collection: verify_col, as: :radio, wrapper_html: {id:'verification-radio'} %>
+    <%= f.input :verification_status, wrapper_html: {id: 'verification-status-wrapper'} %>
+    <%= f.input :progress, wrapper_html: {id: 'progress-wrapper'} %>
+    <%= f.input :confirmed, collection: confirm_col, as: :radio, wrapper_html: {id: 'confirmation_radio'} %>
+    <%= f.input :confirmation_status, wrapper_html:{id:'confirmation_wrapper'} %>
     <legend>اطلاعات وارد شده در فرم</legend>
     <%= f.fields_for :filled_fields do |d| %>
       <% field=d.object.field %>

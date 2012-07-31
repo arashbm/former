@@ -9,17 +9,17 @@ class FilledForm < ActiveRecord::Base
   has_many :filled_fields, dependent: :destroy, validate: true, autosave: true
   accepts_nested_attributes_for :filled_fields
 
+  validates :verified, inclusion: { in: ['true','false','nil'] }, presence: true
+  validates :confirmed, inclusion: { in: ['true', 'false','nil'] }, presence: true
+
   validates :student, presence: true, on: :update
-  #FIXME: validating on create because?!
   validates_each :form, on: :create do |record, attr, value|
     record.errors.add(:base, :not_enabled) unless value.enabled?
   end
-
   validates :form, presence: true
-  
+ 
   # creating empty filled_fields
-  after_initialize do
-    save! unless persisted?
+  after_save do
     form.fields.each do |i|
       filled_fields.find_or_create_by_field_id!(i.id)
     end
@@ -27,6 +27,29 @@ class FilledForm < ActiveRecord::Base
 
   def completed?
     filled_fields.all? {|i| !i.value.blank?}
+  end
+
+
+  def confirmed?
+    case confirmed
+    when 'true'
+      true
+    when 'false'
+      false
+    when 'nil'
+      nil
+    end
+  end
+
+  def verified?
+    case verified
+    when 'true'
+      true
+    when 'false'
+      false
+    when 'nil'
+      nil
+    end
   end
 
   # FIXME: CLEAN THIS MESS UP!

@@ -22,7 +22,7 @@ module ApplicationHelper
      end
   end
 
-  def badge(text,additional_classes="")
-    content_tag :span, text, class: "badge #{additional_classes}"
+  def badge(text,additional_classes="", title='')
+    content_tag :span, text, class: "badge #{additional_classes}", title:title 
   end
 end
