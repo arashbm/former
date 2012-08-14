@@ -18,6 +18,13 @@
 
   </head>
   <body>
+    <header>
+      <% if admin_signed_in? %>
+        <%= render 'layouts/admin_navbar' %>
+      <% else  %>
+        <%= render 'layouts/navbar' %>
+      <% end %>
+    </header>
     <div class="container">
       <% [:notice, :error, :alert].each do |level| %>
         <% unless flash[level].blank? %>
@@ -27,8 +34,11 @@
           </div>
         <% end %>
       <% end %>
-      <%= render :partial => 'layouts/navbar' %>
       <%= yield %>
     </div>
+    <footer class="well">
+      <p>تمام حقوق این وب‌سایت برای دفتر استعداد‌های درخشان دانشگاه شهید بهشتی محفوظ است.</p>
+      <p>این Web Application توسط <a href="http://about.me/arashbm">آرش بدیع مدیری</a> در سال ۱۳۹۱ ایجاد شده.</p>
+    </footer>
   </body>
 </html>

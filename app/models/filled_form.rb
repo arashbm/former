@@ -19,14 +19,14 @@ class FilledForm < ActiveRecord::Base
   validates :form, presence: true
  
   # creating empty filled_fields
-  after_save do
+  after_initialize(if: :persisted?) do
     form.fields.each do |i|
       filled_fields.find_or_create_by_field_id!(i.id)
     end
   end
 
   def completed?
-    filled_fields.all? {|i| !i.value.blank?}
+    filled_fields.all? {|i| i.field.optional? || i.filled?}
   end
 
 

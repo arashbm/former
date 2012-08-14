@@ -1,9 +1,12 @@
 <h2>ورود</h2>
 <div class='row'>
- <div class='span4'>
+  <div class='span4'>
+  <% if resource_name == :student %>
     <p>اگر تاکنون ثبت‌نام نکرده‌اید می‌توانید از طریق صفحه‌ی ثبت‌نام این کار را انجام دهید. اگر ثبت‌نام کرده‌اید ولی رمز عبور‌تان را فراموش کرده‌اید از لینک انتهای صفحه نسبت به بازیابی آن اقدام کنید. توجه کنید رمز عور شما مانند کارت شناسایی شماست، پس در حفظ امنیت آن کوشا باشید.</p>
+  <% elsif resource_name == :admin %>
+    <p>جهت ورود به بخش مدیریت، اطلاعات حساب کاربری‌تان را اینجا وارد کنید.</p>
+  <% end %>
   </div>
-
   <div class='span8'>
     <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
       <div class="form-inputs">

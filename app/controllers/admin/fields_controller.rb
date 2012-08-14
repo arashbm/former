@@ -7,33 +7,21 @@ class Admin::FieldsController < ApplicationController
   # GET /fields.json
   def index
     @fields = Field.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @fields }
-    end
+    respond_with :admin, @fields
   end
 
   # GET /fields/1
   # GET /fields/1.json
   def show
     @field = Field.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @field }
-    end
+    respond_with :admin, @field
   end
 
   # GET /fields/new
   # GET /fields/new.json
   def new
     @field = Field.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @field }
-    end
+    respond_with :admin, @field
   end
 
   # GET /fields/1/edit
@@ -44,33 +32,16 @@ class Admin::FieldsController < ApplicationController
   # POST /fields
   # POST /fields.json
   def create
-    @field = Field.new(params[:field])
-
-    respond_to do |format|
-      if @field.save
-        format.html { redirect_to [:admin, @field], notice: 'Field was successfully created.' }
-        format.json { render json: @field, status: :created, location: @field }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @field.errors, status: :unprocessable_entity }
-      end
-    end
+    @field = Field.create(params[:field])
+    respond_with :admin, @field
   end
 
   # PUT /fields/1
   # PUT /fields/1.json
   def update
     @field = Field.find(params[:id])
-
-    respond_to do |format|
-      if @field.update_attributes(params[:field])
-        format.html { redirect_to [:admin,@fields], notice: 'Field was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @field.errors, status: :unprocessable_entity }
-      end
-    end
+    @field.update_attributes(params[:field])
+    respond_with :admin, @field
   end
 
   # DELETE /fields/1
@@ -78,10 +49,6 @@ class Admin::FieldsController < ApplicationController
   def destroy
     @field = Field.find(params[:id])
     @field.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_fields_url }
-      format.json { head :no_content }
-    end
+    respond_with :admin, @field
   end
 end

@@ -5,4 +5,14 @@ class Field < ActiveRecord::Base
   has_and_belongs_to_many :forms
 
   validates :name, presence: true
+  validates :field_type, presence: true
+
+  def collection
+    return FIELDS_CONFIG['fields'].try(:[],field_type).try(:[],'collection')
+  end
+
+  def input_type
+    return FIELDS_CONFIG['fields'].try(:[],field_type).try(:[],'type')
+  end
+
 end

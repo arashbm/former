@@ -1,5 +1,6 @@
 <div class='row'>
   <div class='span5 offset1'>
+    <div class="alert alert-info alert-block"><strong>راهنمای استفاده از سایت:</strong> <p>به محض پر کردن همه‌ی فیلد‌های اجباری (که با * مشخص شده‌اند) فرم به صورت خودکار وارد پروسه‌ی بررسی صحت اطلاعات و مراحل اداری می‌شود.</p><p>همچنین اگر تمایل دارید می‌توانید فرم را در چند مرحله پر کنید. برای این‌کار پس از هربار تغییر در فرم، آن را ذخیره کنید، سپس از محل سوابق پر شدن آن فرم در صفحه‌ی اصلی، کار خود را ادامه دهید.</p></div>
     <%= simple_form_for([@form,@filled_form], validate: true) do |f| %>
       <%= f.error_notification %>
       <%= f.error :base %>
@@ -7,12 +8,6 @@
         <%= f.fields_for :filled_fields do |d| %>
           <% field=d.object.field %>
           <%= d.input :field_id, as: :hidden %>
-          <% collection=case field.field_type %>
-          <%# #TODO: MOVE IT OUTA HERE %>
-          <% when 'tedadevahed' then 0..6 %>
-          <% when 'maghta' then [t(:undergrad),t(:grad),t(:phd)]  %>
-          <% else false %>
-          <% end %>
           <%= filled_field_input d, field %>
           <%# <span class="help-inline"><%= @filled_form.errors["data[#{field.name}]"][0] if @filled_form.errors["data[#{field.name}]"][0].present?  %1></span> %>
         <% end %>
@@ -23,6 +18,7 @@
     <% end %>
   </div>
   <div class='span5'>
-    <div class='well'><%= simple_format @form.description %></div>
+
+    <div class='well'><h2>توضیحات مربوط یه «<%= @form.name %>»</h2><%= simple_format @form.description %></div>
   </div>  
 </div>

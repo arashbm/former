@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   respond_to :html
 
   protect_from_forgery
-  def admins_root_path
+  def admin_root_path
     admin_forms_path
   end
 end

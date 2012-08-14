@@ -16,7 +16,7 @@
     <td><%= filled_form.student.full_name %></td>
     <td><%= JalaliDate.new(filled_form.created_at).strftime('%A %e %b %Y ساعت  %H:%M') %></td>   
     <td><%= JalaliDate.new(filled_form.updated_at).strftime('%A %e %b %Y ساعت  %H:%M') %></td>   
-    <td><%= if filled_form.completed? then badge('تکمیل شده','badge-success') else badge('ناکامل','badge-warning') end %></td>
+    <td><%= status_badges(filled_form) %></td>
     <td><%= link_to 'Show', [:admin, @form, filled_form] %></td>
     <td><%= link_to 'Edit', edit_admin_form_filled_form_path(@form, filled_form) %></td>
     <td><%= link_to 'Destroy', [:admin, @form, filled_form], confirm: 'Are you sure?', method: :delete %></td>

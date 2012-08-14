@@ -18,12 +18,7 @@ class Admin::FilledFormsController < ApplicationController
   # GET /admin/filled_forms/new
   # GET /admin/filled_forms/new.json
   def new
-    if @filled_forms.all?(&:completed?)
-      @filled_form = @filled_forms.new
-    else
-      @filled_form = @filled_forms.delete_if(&:completed?).last
-    end
-
+    @filled_form = @filled_forms.create
     redirect_to [:edit, :admin, @form, @filled_form] and return
   end
 

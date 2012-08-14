@@ -11,22 +11,15 @@
                     'موافقت شده'=>'true',
                     'موافقت نشده'=>'false'} %>
     <%= f.input :verified, collection: verify_col, as: :radio, wrapper_html: {id:'verification-radio'} %>
-    <%= f.input :verification_status, wrapper_html: {id: 'verification-status-wrapper'} %>
-    <%= f.input :progress, wrapper_html: {id: 'progress-wrapper'} %>
+    <%= f.input :verification_status, input_html:{data:{provide:"typeahead", source:@form.filled_forms.pluck(:verification_status)}, autocomplete:'off'}, wrapper_html: {id: 'verification-status-wrapper'} %>
+    <%= f.input :progress, input_html:{data:{provide:"typeahead", source:@form.filled_forms.pluck(:progress)}}, wrapper_html: {id: 'progress-wrapper'} %>
     <%= f.input :confirmed, collection: confirm_col, as: :radio, wrapper_html: {id: 'confirmation_radio'} %>
-    <%= f.input :confirmation_status, wrapper_html:{id:'confirmation_wrapper'} %>
+    <%= f.input :confirmation_status, input_html:{data:{provide:"typeahead", source:@form.filled_forms.pluck(:confirmation_status)}}, wrapper_html:{id:'confirmation_wrapper'} %>
     <legend>اطلاعات وارد شده در فرم</legend>
     <%= f.fields_for :filled_fields do |d| %>
       <% field=d.object.field %>
       <%= d.input :field_id, as: :hidden %>
-      <% collection=case field.field_type %>
-      <%# #TODO: MOVE IT OUTA HERE %>
-    <% when 'tedadevahed' then 0..6 %>
-    <% when 'maghta' then [t(:undergrad),t(:grad),t(:phd)]  %>
-      <% else false %>
-      <% end %>
       <%= filled_field_input d, field %>
-      <%# <span class="help-inline"><%= @filled_form.errors["data[#{field.name}]"][0] if @filled_form.errors["data[#{field.name}]"][0].present?  %1></span> %>
     <% end %>
   </div>
 

@@ -1,23 +1,21 @@
 <h1>لیست فرم‌ها</h1>
+<%= link_to 'New Form', new_admin_form_path %>
 
 <table class="table">
   <tr>
     <th><%= t ".name" %></th>
     <th><%= t ".description" %></th>
-    <th></th>
-    <th></th>
+    <th>نسخه‌های پر شده</th>
     <th></th>
   </tr>
 
 <% @forms.each do |form| %>
   <tr>
     <td><%= form.name %></td>
-    <td><%= form.description %></td>
+    <td><%= simple_format(truncate form.description, length: 200, separator:'.') %></td>
+    <% not_checked =  form.filled_forms.all.select{ |i| i.verified? == nil} %>
+    <td><%= link_to "#{form.filled_forms.count} نسخه (#{not_checked.count} بررسی نشده)", admin_form_filled_forms_path(form) %><td>
     <td><%= link_to 'ویرایش', edit_admin_form_path(form) %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Form', new_admin_form_path %>
