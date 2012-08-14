@@ -18,6 +18,7 @@ module ApplicationHelper
      class_string='active' if path==me_students_path && current_page?(root_path)
      class_string << ' ' << additional_class unless additional_class == ''
      content_tag :li, class: class_string do
+       p method
        link_to name,path, method: method
      end
   end
