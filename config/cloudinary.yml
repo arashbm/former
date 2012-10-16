@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: gaah
+  api_key: '676746176724613'
+  api_secret: JhhZwN46F-Zq5zu1RqtFPNzVlSA
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: gaah
+  api_key: '676746176724613'
+  api_secret: JhhZwN46F-Zq5zu1RqtFPNzVlSA
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: gaah
+  api_key: '676746176724613'
+  api_secret: JhhZwN46F-Zq5zu1RqtFPNzVlSA
+  enhance_image_tag: true
+  static_image_support: false

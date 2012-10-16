@@ -45,6 +45,6 @@ gem 'jalalidate'
 gem 'responders'
 
 gem "carrierwave"
-gem 'carrierwave-mongoid'
+gem 'cloudinary'
 # For debugging
 # gem 'ruby-debug19', :require => 'ruby-debug'
