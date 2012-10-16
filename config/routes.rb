@@ -1,5 +1,7 @@
 Former::Application.routes.draw do
 
+  resources :blogs
+
   devise_for :admins
   devise_for :students
 

@@ -45,6 +45,7 @@ gem 'jalalidate'
 gem 'responders'
 
 gem "carrierwave"
-gem 'cloudinary'
+
+gem "twitter-bootstrap-rails"
 # For debugging
 # gem 'ruby-debug19', :require => 'ruby-debug'
