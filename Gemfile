@@ -45,8 +45,7 @@ gem 'jalalidate'
 gem 'responders'
 
 gem "carrierwave"
-gem "mini_magick"
+
 gem "twitter-bootstrap-rails"
-# gem 'carrierwave-mongoid'
 # For debugging
 # gem 'ruby-debug19', :require => 'ruby-debug'

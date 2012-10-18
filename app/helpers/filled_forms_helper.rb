@@ -39,6 +39,7 @@ module FilledFormsHelper
       if builder.object.attached_file?
         return "<div class='row'><div class='span4 offset1'><div class='thumbnail'>#{image_tag builder.object.attached_file.url}<p>#{field.name} ارسال شده‌ی فعلی</p></div></div></div>#{builder.input :attached_file, opts}#{builder.hidden_field :attached_file_cache}".html_safe
       else
+        concat builder.hidden_field :attached_file_cache
         return builder.input :attached_file, opts
       end
     else
