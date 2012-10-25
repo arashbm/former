@@ -16,3 +16,10 @@ fields:
       فنی: [ مهندسی کامپیوتر, برق ]
   minor:
     name: گرایش
+  dual-major-laws:
+    name: شرایط دورشته‌ای کردن
+    collection: [ 'بند الف: ' , 'بند ب: ', 'بند ج: ', 'بند د: ' ]
+    field_type: radio_button
+  general-file:
+    name: فیلد فایل
+    field_type: attachinary

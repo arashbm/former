@@ -44,6 +44,7 @@ gem 'jalalidate'
 
 gem 'responders'
 
+gem "attachinary"
 gem "carrierwave"
 
 gem "twitter-bootstrap-rails"

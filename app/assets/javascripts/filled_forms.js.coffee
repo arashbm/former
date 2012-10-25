@@ -21,4 +21,5 @@ updateWrappers = ->
 jQuery ->
   updateWrappers()
   $(':radio').click -> updateWrappers()
+  $('.attachinary-input').attachinary()
 
