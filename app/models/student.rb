@@ -17,7 +17,6 @@ class Student < ActiveRecord::Base
   validates :major, presence: true
   validates :mobile_phone, presence: true
   validates :phone_number, presence: true
-  validates :bylaw, presence: true
   def full_name
     "#{first_name} #{last_name}"
   end  
