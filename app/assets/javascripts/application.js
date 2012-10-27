@@ -13,6 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require cloudinary
-//= require attachinary
 //= require_tree .

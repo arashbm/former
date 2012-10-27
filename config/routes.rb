@@ -5,8 +5,6 @@ Former::Application.routes.draw do
   devise_for :admins
   devise_for :students
 
-  mount Attachinary::Engine => "/attachinary" 
-
   resources :forms do
     resources :filled_forms
   end

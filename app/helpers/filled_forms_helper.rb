@@ -32,10 +32,9 @@ module FilledFormsHelper
 
   def filled_field_input(builder, field)
     opts= {hint: field.description, required: false, label: field.name, as: field.input_type.try(:to_sym), collection: field.collection}
-    opts[:as]=:string if opts[:collection] == nil && opts[:input_type] == nil
+    opts[:as] ||= :string if opts[:collection] == nil
     case field.field_type
-    when 'attached-file'
-      opts[:as] = :file
+    when 'file'
       if builder.object.attached_file?
         return "<div class='row'><div class='span4 offset1'><div class='thumbnail'>#{image_tag builder.object.attached_file.url}<p>#{field.name} ارسال شده‌ی فعلی</p></div></div></div>#{builder.input :attached_file, opts}#{builder.hidden_field :attached_file_cache}".html_safe
       else

@@ -12,7 +12,7 @@ class Field < ActiveRecord::Base
   end
 
   def input_type
-    return FIELDS_CONFIG['fields'].try(:[],field_type).try(:[],'type')
+    return FIELDS_CONFIG['fields'].try(:[],field_type).try(:[],'input_type')
   end
 
 end

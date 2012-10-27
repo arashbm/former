@@ -22,4 +22,4 @@ fields:
     field_type: radio_button
   general-file:
     name: فیلد فایل
-    field_type: attachinary
+    input_type: file
