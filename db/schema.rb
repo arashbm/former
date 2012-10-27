@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814090255) do
+ActiveRecord::Schema.define(:version => 20121026214242) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(:version => 20120814090255) do
     t.string   "mobile_phone"
     t.string   "identification_number"
     t.string   "birth_date"
-    t.string   "bylaw"
   end
 
   add_index "students", ["email"], :name => "index_students_on_email", :unique => true
