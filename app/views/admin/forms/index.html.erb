@@ -1,10 +1,12 @@
 <h1>لیست فرم‌ها</h1>
-<%= link_to 'New Form', new_admin_form_path %>
+<div class='btn-toolbar'>
+  <%= link_to "فرم جدید", new_admin_form_path, class: 'btn btn-primary' %>
+</div>
 
 <table class="table">
   <tr>
-    <th><%= t ".name" %></th>
-    <th><%= t ".description" %></th>
+    <th>عنوان</th>
+    <th>توضیحات</th>
     <th>نسخه‌های پر شده</th>
     <th></th>
   </tr>
