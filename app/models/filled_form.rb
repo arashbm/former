@@ -7,7 +7,7 @@ class FilledForm < ActiveRecord::Base
   belongs_to :student
   belongs_to :form
   has_many :filled_fields, dependent: :destroy, validate: true, autosave: true
-  accepts_nested_attributes_for :filled_fields
+  accepts_nested_attributes_for :filled_fields, update_only: true
 
   validates :verified, inclusion: { in: ['true','false','nil'] }, presence: true
   validates :confirmed, inclusion: { in: ['true', 'false','nil'] }, presence: true
@@ -17,7 +17,7 @@ class FilledForm < ActiveRecord::Base
     record.errors.add(:base, :not_enabled) unless value.enabled?
   end
   validates :form, presence: true
- 
+
   # creating empty filled_fields
   after_initialize(if: :persisted?) do
     form.fields.each do |i|
