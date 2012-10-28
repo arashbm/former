@@ -44,8 +44,8 @@ gem 'jalalidate'
 
 gem 'responders'
 
-gem 'cloudinary'
 gem "carrierwave"
+gem 'cloudinary'
 
 gem "twitter-bootstrap-rails"
 # For debugging
