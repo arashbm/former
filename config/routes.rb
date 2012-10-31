@@ -16,6 +16,7 @@ Former::Application.routes.draw do
   namespace :admin do
     resources :fields
     resources :forms do
+      member { put :sort }
       resources :filled_forms
     end
   end

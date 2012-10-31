@@ -13,7 +13,7 @@
 
 <% @forms.each do |form| %>
   <tr>
-    <td><%= form.name %></td>
+    <td><%= link_to form.name, [:admin,form] %></td>
     <td><%= simple_format(truncate form.description, length: 200, separator:'.') %></td>
     <% not_checked =  form.filled_forms.all.select{ |i| i.verified? == nil} %>
     <td><%= link_to "#{form.filled_forms.count} نسخه (#{not_checked.count} بررسی نشده)", admin_form_filled_forms_path(form) %><td>

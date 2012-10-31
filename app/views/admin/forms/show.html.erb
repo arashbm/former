@@ -1,13 +1,13 @@
-<p>
-  <b><%= t ".name" %>:</b>
-  <%= @form.name %>
-</p>
+<h1><%= @form.name %></h1>
+<%= simple_format @form.description %>
 
-<p>
-  <b><%= t ".description" %>:</b>
-  <%= simple_format @form.description %>
-</p>
-
+<h2>فیلد‌ها</h2>
+<ul id='fields' data-update-url='<%= sort_admin_form_url @form %>'>
+  <%= content_tag_for :li, @form.fields do |field|  %>
+    <span class='handle'> [بکشید] </span>
+    <%= field.name %>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_admin_form_path(@form) %> |
 <%= link_to 'Back', admin_forms_path %>

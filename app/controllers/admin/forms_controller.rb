@@ -45,6 +45,14 @@ class Admin::FormsController < ApplicationController
     respond_with :admin, @form
   end
 
+  def sort
+    @form = Form.find(params[:id])
+    params[:field].each_with_index do |id, index|
+      @form.fields_forms.update_all({position: index.to_i },{field_id: id.to_i})
+    end
+    render nothing: true
+  end
+
   # DELETE /forms/1
   # DELETE /forms/1.json
   def destroy
