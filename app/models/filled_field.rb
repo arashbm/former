@@ -14,9 +14,10 @@ class FilledField < ActiveRecord::Base
                                     greater_than_or_equal_to: 0,
                                     less_than_or_equal_to:20},
                                     allow_nil: true, if: Proc.new { |ff| ff.field.field_type == 'grade' }
-
   # validates :value, inclusion: { in: [] }
-
+  def position
+    filled_form.form.fields_forms.find_by_field_id(field_id).position
+  end
   def filled?
     case field.input_type
     when 'file'
