@@ -1,3 +1,7 @@
 body {padding-top: 60px}
 @media (max-width: 980px) {body { padding-top: 0; }}
 p.form-desc { min-height: 100px; }
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+body {
+ font-family: 'Droid Arabic Naskh', serif; 
+}
