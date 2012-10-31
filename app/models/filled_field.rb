@@ -1,6 +1,7 @@
 class FilledField < ActiveRecord::Base
   belongs_to :filled_form
   belongs_to :field
+
   mount_uploader :attached_file, AttachedFileUploader
 
   # field_id is a security risk or not?!
@@ -12,7 +13,7 @@ class FilledField < ActiveRecord::Base
   validates :value, numericality: { only_integer: true,
                                     greater_than_or_equal_to: 0,
                                     less_than_or_equal_to:20},
-                                    allow_nil: true, if: Proc.new { |ff| ff.field.field_type=='grade'}
+                                    allow_nil: true, if: Proc.new { |ff| ff.field.field_type == 'grade' }
 
   # validates :value, inclusion: { in: [] }
 
