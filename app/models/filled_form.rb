@@ -52,22 +52,7 @@ class FilledForm < ActiveRecord::Base
     end
   end
 
-  # FIXME: CLEAN THIS MESS UP!
-  # validates_each :data do |record, attr, value|
-    # value.each do |field_data|
-      # f=Field.find_by_name(field_data[0])
-      # case f.field_type
-      # when 'daneshkade-reshte-gerayes'
-      # when 'maghta'
-      #   acceptable=[I18n.t(:undergrad),I18n.t(:grad),I18n.t(:phd)]
-      #   if !acceptable.include?(field_data[1])
-      #     record.errors.add("data[#{field_data[0]}]".to_sym, field_data[0]+' '+I18n.t('errors.messages.inclusion'))
-      #   end
-      # when 'tedadevahed'
-        # record.errors.add(:data, :not_a_number) if !(field_data[1].to_s =~ /\A[+-]?\d+\Z/)
-        # record.errors.add(:data, :greater_than_or_equal_to,0) if field_data[1].to_i < 0
-      # else
-      # end
-    # # end
-  # end
+  def sorted_filled_fields
+    filled_fields.sort_by(&:position)
+  end
 end

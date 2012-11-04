@@ -16,7 +16,7 @@
     <%= f.input :confirmed, collection: confirm_col, as: :radio, wrapper_html: {id: 'confirmation_radio'} %>
     <%= f.input :confirmation_status, input_html:{data:{provide:"typeahead", source:@form.filled_forms.pluck(:confirmation_status)}}, wrapper_html:{id:'confirmation_wrapper'} %>
     <legend>اطلاعات وارد شده در فرم</legend>
-    <%= f.fields_for :filled_fields do |d| %>
+    <%= f.fields_for :filled_fields, f.object.sorted_filled_fields do |d| %>
       <% field=d.object.field %>
       <%= d.input :field_id, as: :hidden %>
       <%= filled_field_input d, field %>

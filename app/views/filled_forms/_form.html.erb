@@ -5,11 +5,10 @@
       <%= f.error_notification %>
       <%= f.error :base %>
       <div class="form-inputs">
-        <%= f.fields_for :filled_fields do |d| %>
-          <% field=d.object.field %>
-          <%= d.input :field_id, as: :hidden %>
-          <%= filled_field_input d, field %>
-          <%# <span class="help-inline"><%= @filled_form.errors["data[#{field.name}]"][0] if @filled_form.errors["data[#{field.name}]"][0].present?  %1></span> %>
+        <%= f.fields_for :filled_fields, f.object.sorted_filled_fields do |ff| %>
+          <% field = ff.object.field %>
+          <%= ff.input :field_id, as: :hidden %>
+          <%= filled_field_input ff, field %>
         <% end %>
       </div>
       <div class="form-actions">
@@ -18,7 +17,6 @@
     <% end %>
   </div>
   <div class='span5'>
-
     <div class='well'><h2>توضیحات مربوط یه «<%= @form.name %>»</h2><%= simple_format @form.description %></div>
   </div>  
 </div>

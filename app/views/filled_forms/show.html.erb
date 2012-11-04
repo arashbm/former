@@ -3,7 +3,7 @@
 <p><strong>آخرین ویرایش در</strong> <%= JalaliDate.new(@filled_form.created_at).strftime('%A %e %b %Y ساعت  %H:%M') %></p>
 <div>
   <h2>اطلاعات</h2>
-  <%= content_tag_for :p, @filled_form.filled_fields.all.delete_if{ |i| i.value.blank? } do |f| %>
+  <%= content_tag_for :p, @filled_form.sorted_filled_fields.delete_if{ |i| i.value.blank? } do |f| %>
     <%= content_tag :strong, f.field.name %>: <%= f.value %>
   <% end %>
 </div>
@@ -15,7 +15,7 @@
   <% else %>
     <p>این فیلد‌ها هنوز پر نشده‌ند:</p>
     <ul>
-      <%= content_tag_for :li, @filled_form.filled_fields.select{|i| !i.filled?} do |f| %>
+      <%= content_tag_for :li, @filled_form.sorted_filled_fields.select{|i| !i.filled?} do |f| %>
         <%= f.field.name %>
       <% end %>
     </ul>
