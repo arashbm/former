@@ -20,7 +20,9 @@
     <header>
       <% if admin_signed_in? %>
         <%= render 'layouts/admin_navbar' %>
-      <% else  %>
+      <% elsif student_signed_in?  %>
+        <%= render 'layouts/student_navbar' %>
+      <% else %>
         <%= render 'layouts/navbar' %>
       <% end %>
     </header>
@@ -35,9 +37,9 @@
       <% end %>
       <%= yield %>
     </div>
-    <footer class="well">
+    <hr />
+    <footer>
       <p>تمام حقوق این وب‌سایت برای دفتر استعداد‌های درخشان دانشگاه شهید بهشتی محفوظ است.</p>
-      <p>این Web Application توسط <a href="http://about.me/arashbm">آرش بدیع مدیری</a> در سال ۱۳۹۱ ایجاد شده.</p>
     </footer>
   </body>
 </html>
