@@ -1,6 +1,5 @@
-<h1>Editing student</h1>
+<div class='page-header'>
+  <h1>ویرایش اطلاعات <%= link_to @student.full_name, @student %></h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @student %> |
-<%= link_to 'Back', students_path %>

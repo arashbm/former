@@ -223,6 +223,9 @@ fa:
         confirmation_status: علت عدم موافقت
       student:
         email: ایمیل
+        full_name: نام
+        first_name: نام
+        last_name: نام خانوادگی
         password: رمزعبور
         password_confirmation: تکرار رمز عبور
         remember_me: مرا به یاد بسپار
@@ -234,7 +237,6 @@ fa:
         father_name: نام پدر
         identification_number: کد ملی
         birth_date: تاریخ تولد
-        bylaw: شامل کدام بند آیین نامه می‌شوید
       admin:
         email: ایمیل
         password: رمزعبور

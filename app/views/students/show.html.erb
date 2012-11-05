@@ -1,20 +1,56 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>First name:</b>
-  <%= @student.first_name %>
+<b>نام:</b>
+<%= @student.first_name %>
 </p>
 
 <p>
-  <b>Last name:</b>
-  <%= @student.last_name %>
+<b>نام خانوادگی:</b>
+<%= @student.last_name %>
 </p>
 
 <p>
-  <b>Student:</b>
-  <%= @student.student_id %>
+<b>ایمیل:</b>
+<%= @student.email %>
+</p>
+<p>
+<b>رشته:</b>
+<%= @student.major %>
 </p>
 
+<p>
+<b>گرایش:</b>
+<%= @student.minor %>
+</p>
+
+<p>
+<b>نام پدر:</b>
+<%= @student.father_name %>
+</p>
+
+<p>
+<b>جنسیت:</b>
+<%= @student.gender %>
+</p>
+
+<p>
+<b>شماره تلفن:</b>
+<%= @student.phone_number %>
+</p>
+
+<p>
+<b>شماره‌ی تلفن همراه:</b>
+<%= @student.mobile_phone %>
+</p>
+
+<p>
+<b>کد ملی:</b>
+<%= @student.identification_number %>
+</p>
+
+<p>
+<b>تاریخ تولد:</b>
+<%= @student.birth_date %>
+</p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
