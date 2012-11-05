@@ -210,7 +210,11 @@ fa:
       form: فرم
       field: فیلد
       filled_form: فرم پر شده
+      blog: اطلاعیه
     attributes:
+      blog:
+        title: عنوان
+        description: بدنه
       filled_form:
         verified: تایید محتوا
         verification_status: علت عدم تایید

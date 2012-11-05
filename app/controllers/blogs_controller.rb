@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_filter :authenticate_admin!, only: [ :new, :create, :destroy, :edit, :update]
   def index
     @blogs = Blog.all
     respond_with(@blogs)

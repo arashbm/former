@@ -5,23 +5,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
         <%= '<span class="icon-bar"></span>'.html_safe unless student_signed_in? %>
       </a>
       <a class="brand" href="#">استعداد‌های درخشان</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <%= navbar_item(me_students_path, t(:home)) %>
-          <%= navbar_item(page_path("about"), 'درباره') %>
-          <%= navbar_item(page_path("contact"), 'تماس') %>
+          <%= navbar_item me_students_path, t(:home) %>
+          <%= navbar_item blogs_path, 'اطلاعیه‌ها' %>
+          <%= navbar_item page_path("about"), 'درباره' %>
+          <%= navbar_item page_path("contact"), 'تماس' %>
         </ul>
         <ul class="nav pull-left">
-          <% unless student_signed_in? %>
-            <%= navbar_item(new_student_session_path,'ورود') %>
-            <%= navbar_item(new_student_registration_path,'ثبت نام در سیستم') %>
-          <% else %>
-            <%= navbar_item(destroy_student_session_path,'خروج','',:delete) %>
-          <% end %>
+          <%= navbar_item(new_student_session_path,'ورود') %>
+          <%= navbar_item(new_student_registration_path,'ثبت نام در سیستم') %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

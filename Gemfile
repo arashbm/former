@@ -44,6 +44,7 @@ gem 'high_voltage'
 
 # for jalali date
 gem 'jalalidate'
+gem 'marked-rails'
 
 gem 'responders'
 

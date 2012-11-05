@@ -1,25 +1,18 @@
-<h1>Listing blogs</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @blogs.each do |blog| %>
-  <tr>
-    <td><%= blog.title %></td>
-    <td><%= blog.description %></td>
-    <td><%= link_to 'Show', blog %></td>
-    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <td><%= link_to 'Destroy', blog, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<div class='page-header'>
+  <h1>اخبار و اطلاعیه‌ها</h1>
+</div>
+<% if admin_signed_in? %>
+  <%= link_to '<i class="icon-plus-sign"></i> پست جدید'.html_safe , new_blog_path, class: 'btn btn-primary' %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Blog', new_blog_path %>
+<%= content_tag_for :article, @blogs, class: 'row' do |blog| %>
+  <div class='span8 offset2'>
+    <h2><%= link_to blog.title, blog %></h2>
+    <% if admin_signed_in? %>
+      <div class='btn-toolbar pull-left'>
+        <%= link_to 'edit', edit_blog_path(blog), class: 'btn btn-small'  %>
+        <%= link_to 'destroy', blog, confirm: 'are you sure?', method: :delete, class: 'btn btn-small btn-danger' %>
+      </div>
+    <% end %>
+    <%= content_tag :div, blog.description, data: { markdown: blog.description } %>
+  </div>
+<% end %>

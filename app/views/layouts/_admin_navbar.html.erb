@@ -5,9 +5,6 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </a>
       <a class="brand" href="#">استعداد‌های درخشان</a>
       <div class="nav-collapse">
@@ -15,6 +12,7 @@
           <%= navbar_item(root_path, t(:home)) %>
           <%= navbar_item(admin_forms_path, 'مدیریت فرم‌ها') %>
           <%= navbar_item(admin_fields_path, 'مدیریت فیلد‌ها') %>
+          <%= navbar_item blogs_path, 'اطلاعیه‌ها' %>
           <%= navbar_item(page_path("about"), 'درباره') %>
           <%= navbar_item(page_path("contact"), 'تماس') %>
         </ul>
