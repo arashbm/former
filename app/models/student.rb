@@ -7,16 +7,21 @@ class Student < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name,
     :student_id, :father_name, :gender, :major, :minor, :phone_number, :mobile_phone,
-    :identification_number, :birth_date, :bylaw
+    :identification_number, :birth_date
 
   has_many :filled_forms
 
+  validates :email, presence: true
   validates :gender, presence: true
   validates :father_name, presence: true
   validates :identification_number, presence: true
   validates :major, presence: true
   validates :mobile_phone, presence: true
   validates :phone_number, presence: true
+  validates :student_id, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :birth_date, presence: true
   def full_name
     "#{first_name} #{last_name}"
   end  

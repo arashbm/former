@@ -7,12 +7,14 @@ module ApplicationHelper
     end
   end
 
-  def navbar_item(path,name,additional_class='',method=:get)
+  def navbar_item(path,name,additional_class='',method=:get, icon=nil)
      class_string = if current_page?(path)
        'active'
      else
        ''
      end
+
+     name = "<i class='icon-#{icon}'></i> #{h(name)}".html_safe if icon
 
      # special case for root_path
      class_string='active' if path==me_students_path && current_page?(root_path)

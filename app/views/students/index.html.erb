@@ -20,8 +20,8 @@
         <td><%= link_to student.full_name, student %></td>
         <td><%= student.email %></td>
         <td><%= student.identification_number %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %>
-        <%= link_to 'Destroy', student, confirm: 'Are you sure?', method: :delete %></td>
+        <td><%= link_to 'Edit', edit_student_path(student), class: 'btn btn-small' %>
+        <%= link_to 'Destroy', student, confirm: 'Are you sure?', method: :delete, class: 'btn btn-small btn-danger' %></td>
     </tr>
   <% end %>
 </tbody>
