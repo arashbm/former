@@ -5,9 +5,15 @@
     <%= f.input :email %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :identification_number %>
+    <%= f.input :student_id %>
+    <%= f.input :major %>
+    <%= f.input :minor %>
+    <%= f.input :gender, collection: ['مرد','زن'], as: :radio_buttons %>
+    <%= f.input :father_name %>
     <%= f.input :birth_date %>
-    <%= f.input :password %>
+    <%= f.input :identification_number %>
+    <%= f.input :phone_number %>
+    <%= f.input :mobile_phone %>
   </div>
 
   <div class="form-actions">

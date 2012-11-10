@@ -1,10 +1,6 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 fa:
-  undergrad: کارشناسی
-  grad: کارشناسی ارشد
-  phd: دکترا
-  
   home: خانه
 
   date:
@@ -225,6 +221,7 @@ fa:
         email: ایمیل
         full_name: نام
         first_name: نام
+        student_id: شماره‌ی دانشجویی
         last_name: نام خانوادگی
         password: رمزعبور
         password_confirmation: تکرار رمز عبور
