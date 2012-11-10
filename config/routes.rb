@@ -1,6 +1,6 @@
 Former::Application.routes.draw do
 
-  root to: 'students#me'
+  root to: 'blogs#index'
 
   resources :blogs
 
