@@ -48,7 +48,7 @@ module FilledFormsHelper
 
   def disabled_notice(form)
     unless form.enabled?
-      content_tag :div, "این فرم غیر فعال شده است. ممکن است محلت ارسال آن به اتمام رسیده باشد", class:"alert alert-error"
+      content_tag :div, "این فرم غیر فعال شده است. ممکن است مهلت ارسال آن به اتمام رسیده باشد", class:"alert alert-error"
     end
   end
 

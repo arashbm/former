@@ -1,5 +1,4 @@
-<h1>نسخه‌ی <%= @filled_form.form.name %> توسط <%= @filled_form.student.full_name %> <%= content_tag :sup, badge('ناکامل', 'badge-warning') unless @filled_form.completed? %></h1>
-<p><strong>ایجاد شده در</strong> <%= JalaliDate.new(@filled_form.created_at).strftime('%A %e %b %Y ساعت  %H:%M') %></p>
+<h1>نسخه‌ی <%= @filled_form.form.name %> توسط <%= @filled_form.student.full_name %> <%= content_tag :sup, status_badges(@filled_form) %></h1>
 <p><strong>آخرین ویرایش در</strong> <%= JalaliDate.new(@filled_form.created_at).strftime('%A %e %b %Y ساعت  %H:%M') %></p>
 <div>
   <h2>اطلاعات</h2>

@@ -17,7 +17,7 @@ module ApplicationHelper
      name = "<i class='icon-#{icon}'></i> #{h(name)}".html_safe if icon
 
      # special case for root_path
-     class_string='active' if path==me_students_path && current_page?(root_path)
+     class_string='active' if path==blogs_path && current_page?(root_path)
      class_string << ' ' << additional_class unless additional_class == ''
      content_tag :li, class: class_string do
        p method
