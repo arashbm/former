@@ -7,7 +7,7 @@ module ApplicationHelper
     end
   end
 
-  def navbar_item(path,name,additional_class='',method=:get, icon=nil)
+  def navbar_item(path,name,additional_class='',method=nil, icon=nil)
      class_string = if current_page?(path)
        'active'
      else
