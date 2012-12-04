@@ -6,6 +6,7 @@
     <% col = FIELDS_CONFIG['fields'].map{ |k,v| [v['name'],k] } %>
     <%= f.input :field_type, collection: col %>
     <%= f.input :description %>
+    <%= f.input :optional %>
     <%= f.input :enabled %>
   </div>
 
