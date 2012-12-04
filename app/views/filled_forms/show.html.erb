@@ -15,7 +15,7 @@
   <% else %>
     <p>این فیلد‌ها هنوز پر نشده‌ند:</p>
     <ul>
-      <%= content_tag_for :li, @filled_form.sorted_filled_fields.select{|i| !i.filled? & !i.optional?} do |f| %>
+      <%= content_tag_for :li, @filled_form.sorted_filled_fields.select{|i| !i.filled? & !i.field.optional?} do |f| %>
         <%= f.field.name %>
       <% end %>
     </ul>
