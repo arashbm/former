@@ -2,11 +2,11 @@ class FilledField < ActiveRecord::Base
   belongs_to :filled_form
   belongs_to :field
 
-  mount_uploader :attached_file, AttachedFileUploader
-
   # field_id is a security risk or not?!
   attr_accessible :value, :field_id, :attached_file, :attached_file_cache
   attr_accessible :value, :field_id, :attached_file, :attached_file_cache, as: :admin
+
+  mount_uploader :attached_file, AttachedFileUploader
 
   validates :value, numericality: { only_integer: true },
     if: Proc.new { |ff| ff.field.field_type == 'generic-numerical'}
